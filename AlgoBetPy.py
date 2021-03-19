@@ -186,21 +186,13 @@ st.title('Le Retour sur Investissement : ROI')
 st.sidebar.subheader('Afficher les données avec les indices de confiances')
 st.subheader('Données avec les indices de confiances et les gains théoriques')
 algo = st.sidebar.selectbox('Selectionnez un modèle et ses probabilités de victoires',
-                           ["Logistic Regression", "Random Forest", "Decision Tree", "KNN","XGB", "XGB sans proba_ELO"],)   
+                           ["XGB", "XGB sans proba_ELO"],)   
 
 
 #Chargement du fichier csv contenant les probabilités de victoires
-if (algo == "Logistic Regression"):
-    pari = pd.read_csv("pariLogisticRegression(max_iter=2000).csv",index_col=0)
-if (algo == "Random Forest"):
-    pari = pd.read_csv("pariRandomForestClassifier(n_jobs=-1).csv",index_col=0)
-if (algo == "Decision Tree"):
-    pari = pd.read_csv("pariDecisionTreeClassifier().csv",index_col=0)
-if (algo == "KNN"):
-    pari = pd.read_csv("pariKNeighborsClassifier().csv",index_col=0)
 if (algo == "XGB"):
     pari = pd.read_csv("pariXGBoost.csv",index_col=0)
- if (algo == "XGB sans proba_ELO"):
+if (algo == "XGB sans proba_ELO"):
     pari = pd.read_csv("pariXGBoostsansProbaElo.csv",index_col=0)   
     
 
@@ -286,7 +278,7 @@ def Rent(n):
     return ROI
 
 nbpari = st.sidebar.slider(label = 'Selectionnez le nombre de match sur lesquels vous voulez parier',
-                      min_value = 100, max_value=28990, step=100) 
+                      min_value = 100, max_value=28900, step=100) 
 
 #création d'une liste de  gain en fonction du nombre de match parié
 nombre_de_paris = np.linspace(1,nbpari,50,dtype=int)
